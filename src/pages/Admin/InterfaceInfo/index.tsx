@@ -1,7 +1,9 @@
 import {
   addInterfaceInfoUsingPost,
   deleteInterfaceInfoUsingPost,
-  listInterfaceInfoByPageUsingGet, offlineInterfaceInfoUsingPost, onlineInterfaceInfoUsingPost,
+  listInterfaceInfoByPageUsingGet,
+  offlineInterfaceInfoUsingPost,
+  onlineInterfaceInfoUsingPost,
   updateInterfaceInfoUsingPost,
 } from '@/services/Yapi-backend/interfaceInfoController';
 import { PlusOutlined } from '@ant-design/icons';
@@ -105,7 +107,7 @@ const TableList: React.FC = () => {
       // 调用发布接口的POST请求方法
       await onlineInterfaceInfoUsingPost({
         // 传递接口的id参数
-        id: record.id
+        id: record.id,
       });
       hide();
       // 显示操作成功的提示信息
@@ -138,7 +140,7 @@ const TableList: React.FC = () => {
 
       await offlineInterfaceInfoUsingPost({
         // 传递接口的id参数
-        id: record.id
+        id: record.id,
       });
       hide();
       // 显示操作成功的提示信息
@@ -278,26 +280,28 @@ const TableList: React.FC = () => {
         >
           修改
         </Button>,
-        record.status === 0 ?
-        <Button
-          key="online"
-          onClick={() => {
-            handleOnline(record);
-          }}
-        >
-          接口上线
-        </Button> : null,
-        record.status === 1 ?
-        <Button
-          type="text"
-          danger
-          key="offline"
-          onClick={() => {
-            handleOffline(record);
-          }}
-        >
-          接口下线
-        </Button> : null,
+        record.status === 0 ? (
+          <Button
+            key="online"
+            onClick={() => {
+              handleOnline(record);
+            }}
+          >
+            接口上线
+          </Button>
+        ) : null,
+        record.status === 1 ? (
+          <Button
+            type="text"
+            danger
+            key="offline"
+            onClick={() => {
+              handleOffline(record);
+            }}
+          >
+            接口下线
+          </Button>
+        ) : null,
         <Button
           type="text"
           danger
