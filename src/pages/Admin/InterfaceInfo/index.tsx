@@ -230,6 +230,11 @@ const TableList: React.FC = () => {
       valueType: 'text',
     },
     {
+      title: '请求参数',
+      dataIndex: 'requestParams',
+      valueType: 'jsonCode',
+    },
+    {
       title: '请求头',
       dataIndex: 'requestHeader',
       valueType: 'textarea',
